@@ -1,5 +1,6 @@
 const express = require('express');
-const { Todo } = require('../mongo')
+const { Todo } = require('../mongo');
+const { set, get } = require('../redis');
 const router = express.Router();
 
 /* GET todos listing. */
@@ -14,6 +15,13 @@ router.post('/', async (req, res) => {
     text: req.body.text,
     done: false
   })
+  const addedTodosValue = await get("added_todos")
+  console.log(addedTodosValue)
+  let addedTodos = 0
+  if (addedTodosValue) { // only parse value if it is set once already
+    addedTodos = parseInt(addedTodosValue)
+  }
+  await set("added_todos", addedTodos + 1)
   res.send(todo);
 });
 
