@@ -10,4 +10,4 @@ todo-app/playwright-report/
 todo-app/playwright/.cache/
 
 # Folder for following the course material
-testing/
+testing*
