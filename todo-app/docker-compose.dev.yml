@@ -1,0 +1,17 @@
+services:
+  app:
+    image: todo-frontend-dev
+    volumes:
+      - ./todo-frontend:/usr/src/app
+    ports:
+      - 5173:5173
+    container_name: todo-app-frontend-dev # todo-frontend-dev container name is already taken
+  nginx:
+    image: nginx:1.29
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: todo-app-reverse-proxy # reverse-proxy container name already taken (course material)
+    depends_on:
+      - app # wait for the frontend container to be started
