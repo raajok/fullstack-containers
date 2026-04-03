@@ -8,7 +8,8 @@ RUN npm ci
 
 RUN npm run test
 
-ENV VITE_BACKEND_URL="http://localhost:3000"
+# Changed from http://localhost:3000 to http://localhost:8080/api for exercise 20
+ENV VITE_BACKEND_URL="http://localhost:8080/api"
 
 RUN npm run build
 
