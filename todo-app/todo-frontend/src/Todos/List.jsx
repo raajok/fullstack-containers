@@ -3,6 +3,7 @@ import Todo from './Todo'
 
 const TodoList = ({ todos, deleteTodo, completeTodo }) => {
   const onClickDelete = (todo) => () => {
+    console.log("list")
     deleteTodo(todo)
   }
 

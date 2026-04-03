@@ -1,19 +1,11 @@
 import React from 'react'
 
 const Todo = ({ todo, deleteTodo, completeTodo }) => {
-  const onClickDelete = (todo) => () => {
-    deleteTodo(todo)
-  }
-
-  const onClickComplete = (todo) => () => {
-    completeTodo(todo)
-  }
-
   const doneInfo = (
     <>
       <span>This todo is done</span>
       <span>
-        <button onClick={onClickDelete(todo)}> Delete </button>
+        <button onClick={deleteTodo(todo)}> Delete </button>
       </span>
     </>
   )
@@ -24,8 +16,8 @@ const Todo = ({ todo, deleteTodo, completeTodo }) => {
         This todo is not done
       </span>
       <span>
-        <button onClick={onClickDelete(todo)}> Delete </button>
-        <button onClick={onClickComplete(todo)}> Set as done </button>
+        <button onClick={deleteTodo(todo)}> Delete </button>
+        <button onClick={completeTodo(todo)}> Set as done </button>
       </span>
     </>
   )
@@ -41,3 +33,12 @@ const Todo = ({ todo, deleteTodo, completeTodo }) => {
 }
 
 export default Todo
+
+
+
+// For some reason the delete is not working on the backend: "req.todo.delete" is not a function.
+// use docker compose -f docker-compose.dev.yml down -v for clearing everything
+// and docker compose -f docker-compose.dev.yml up to rerun
+// run those from todo-app folder
+// exercise 19 goal is to get the whole app running through one compose file
+// hot-loading fixes is already working, and all features outside of delete are working

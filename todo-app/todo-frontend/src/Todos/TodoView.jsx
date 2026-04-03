@@ -22,6 +22,8 @@ const TodoView = () => {
   }
 
   const deleteTodo = async (todo) => {
+    console.log("calling delete api")
+    console.log(todo._id)
     await axios.delete(`/todos/${todo._id}`)
     refreshTodos()
   }
