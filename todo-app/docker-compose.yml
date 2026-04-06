@@ -37,7 +37,7 @@ services:
     container_name: todo-app-prod-reverse-proxy
     depends_on:
       - app # wait for the frontend container to be started
-      - server
+      - backend
       - mongo
       - redis
     
